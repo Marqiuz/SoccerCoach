@@ -26,5 +26,9 @@
     <ProjectReference Include="..\..\Data\SoccerCoach.Data.Models\SoccerCoach.Data.Models.csproj" />
     <ProjectReference Include="..\..\Services\SoccerCoach.Services.Mapping\SoccerCoach.Services.Mapping.csproj" />
   </ItemGroup>
+  
+  <ItemGroup>
+    <Folder Include="Home\" />
+  </ItemGroup>
 
 </Project>
