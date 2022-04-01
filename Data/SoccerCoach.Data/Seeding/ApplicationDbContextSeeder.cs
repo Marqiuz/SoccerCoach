@@ -6,6 +6,7 @@
 
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Logging;
+    using SoccerCoach.Data.Seeding.PlayersSeeding;
 
     public class ApplicationDbContextSeeder : ISeeder
     {
@@ -27,6 +28,7 @@
                           {
                               new RolesSeeder(),
                               new SettingsSeeder(),
+                              new PlayerSeeder(),
                           };
 
             foreach (var seeder in seeders)

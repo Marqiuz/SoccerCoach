@@ -1,0 +1,53 @@
+[
+  {
+    "name": "Cristiano Ronaldo",
+    "team": "Manchester United",
+    "trophies": 5,
+    "position": "Striker",
+    "height": "1.87m",
+    "weight": "85kg",
+    "experience": "20 years",
+    "description": "Cristiano Ronaldo dos Santos Aveiro (born 5 February 1985) is a Portuguese professional footballer who plays as a striker for Premier League club Manchester United and captains the Portugal national team."
+  },
+  {
+    "name": "Sergio Ramos",
+    "team": "Paris Saint-Germain",
+    "trophies": 4,
+    "position": "Defender",
+    "height": "1.84m",
+    "weight": "82kg",
+    "experience": "19 years",
+    "description": "Sergio Ramos Garcia (born 30 March 1986) is a Spanish professional footballer who plays for Ligue 1 club Paris Saint-Germain and the Spain national team."
+  },
+  {
+    "name": "Neymar Junior",
+    "team": "Paris Saint-Germain",
+    "trophies": 1,
+    "position": "Winger",
+    "height": "1.75m",
+    "weight": "68kg",
+    "experience": "13 years",
+    "description": "Neymar da Silva Santos Junior (born 5 February 1992), known as Neymar, is a Brazilian professional footballer who plays as a winger for Ligue 1 club Paris Saint-Germain and the Brazil national team. He is widely regarded as one of the best players in the world."
+  },
+  {
+    "name": "Luka Modric",
+    "team": "Real Madrid",
+    "trophies": 4,
+    "position": "Midfielder",
+    "height": "1.72m",
+    "weight": "66kg",
+    "experience": "19 years",
+    "description": "Luka Modric (born 9 September 1985) is a Croatian professional footballer who plays as a midfielder for La Liga club Real Madrid and captains the Croatia national team."
+  },
+  {
+    "description": "Manuel Peter Neuer (born 27 March 1986) is a German professional footballer who plays as a goalkeeper and captains both Bundesliga club Bayern Munich and the Germany national team.",
+    "experience": "18 years",
+    "height": "1.93m",
+    "name": "Manuel Neuer",
+    "position": "Goalkeeper",
+    "team": "Bayern Munich",
+    "trophies": 2,
+    "weight": "82kg"
+  }
+]
+

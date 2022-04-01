@@ -33,20 +33,19 @@
         [Range(0, 10)]
         public int Trophies { get; set; }
 
-        public int Height { get; set; }
+        [Required]
+        public string Height { get; set; }
 
-        public int Weight { get; set; }
+        [Required]
+        public string Weight { get; set; }
 
-        public int Experience { get; set; }
+        [Required]
+        public string Experience { get; set; }
 
         [Required]
         public string Description { get; set; }
 
         [Required]
-        [ForeignKey(nameof(Picture))]
-        public string PictureId { get; set; }
-
-        [Required]
-        public virtual Picture Picture { get; set; }
+        public string ImageUrl { get; set; }
     }
 }
