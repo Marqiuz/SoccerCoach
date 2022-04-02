@@ -1,0 +1,117 @@
+[
+  {
+    "position": "Striker",
+    "workouts": [
+      {
+        "workoutname": "Full Striker Training Workout",
+        "description": "full striker  drills for every striker.",
+        "videourl": "https://youtu.be/8l36xfSAzXE",
+        "imageurl": "https://resources.premierleague.com/premierleague/photo/2021/10/14/0e3b06d7-d35c-4ef0-8b44-6847e560108e/Ronaldo.jpg"
+      },
+      {
+        "workoutname": "Movement and Shooting Workout",
+        "description": "Marker the slip and find the back of the net",
+        "videourl": "https://youtu.be/7hOhLGVn5Bc",
+        "imageurl": "https://i2-prod.manchestereveningnews.co.uk/sport/football/football-news/article21523862.ece/ALTERNATES/s1200c/1_GettyImages-1339223857.jpg"
+      },
+      {
+        "workoutname": "Shield and Turn Workout",
+        "description": "This training session focuses on shielding the ball with back to goal, turning quickly and shooting. ",
+        "videourl": "https://youtu.be/eEDcypKejSA",
+        "imageurl": "https://www.chinadailyasia.com/attachments/image/17/2/84/632047_315629/632047_315629_800_auto_jpg.jpg"
+      }
+    ]
+  },
+  {
+    "position": "Winger",
+    "workouts": [
+      {
+        "workoutname": "Full Winger Workout",
+        "description": "Check out some full winger specific drills to improve your performance as a winger in football",
+        "videourl": "https://youtu.be/5yk3Gd2arzI",
+        "imageurl": "https://idsb.tmgrup.com.tr/ly/uploads/images/2021/10/13/151815.jpg"
+      },
+      {
+        "workoutname": "Winger Shooting and Finishing Training",
+        "description": "a variety of shooting drills that are specific for wingers use these individual shooting training drills to become sharper.",
+        "videourl": "https://youtu.be/QBGsamPC5Es",
+        "imageurl": "https://www.fcbarcelona.com/fcbarcelona/photo/2018/07/04/d73919c9-2333-4bcb-82ea-0fb36aa55930/jCOjFETm.jpg"
+      },
+      {
+        "workoutname": "Speed & Agility Drills For Wingers",
+        "description": "This workout brings you through 3 speed & agility drills that are specifically designed for wingers",
+        "videourl": "https://youtu.be/O_pN6wxhN0U",
+        "imageurl": "https://static.euronews.com/articles/3930448/1440x810_nbc-190601-brazil_soccer_copa_america-kf_11ca4a119bc0cce9351c8f758433cbc9.jpg"
+      }
+    ]
+  },
+  {
+    "position": "Midfielder",
+    "workouts": [
+      {
+        "workoutname": "The Essentials To Playing Midfielder",
+        "description": "This workout shows the essentials of playing central midfield successfully",
+        "videourl": "https://youtu.be/InS1CPYQus8",
+        "imageurl": "https://cdnuploads.aa.com.tr/uploads/Contents/2019/09/12/thumbs_b_c_9fffe4e87c50bbb9dc1aa2292fa01cdc.jpg?v=154309"
+      },
+      {
+        "workoutname": "How To Become a Good Midfielder",
+        "description": "You must know about these position-specific drill series.",
+        "videourl": "https://youtu.be/fL8v4RvmeTQ",
+        "imageurl": "https://www.overtimeheroics.net/wp-content/uploads/2020/07/Davis-George.jpg"
+      },
+      {
+        "workoutname": "Speed & Agility Drills For Midfielders",
+        "description": "Midfielders should regularly perform speed and agility drills",
+        "videourl": "https://youtu.be/pbGWrbBBxlk",
+        "imageurl": "https://1.bp.blogspot.com/-PJsiWf-XnPQ/X1MZrQmFSjI/AAAAAAAADgY/YIozwlj2UEMiCRSb9BxT2uu118bXe143QCLcBGAsYHQ/s1600/gettyimages-1264661038-612x612.jpg"
+      }
+    ]
+  },
+  {
+    "position": "Defender",
+    "workouts": [
+      {
+        "workoutname": "Full Defender Session",
+        "description": "individual and partner defending drills for you to become a better defender in soccer",
+        "videourl": "https://youtu.be/wDQ9QQU7cWI",
+        "imageurl": "https://i.ytimg.com/vi/aRldJEKMb9M/maxresdefault.jpg"
+      },
+      {
+        "workoutname": "Defender Drills",
+        "description": "Effective individual soccer training for defenders",
+        "videourl": "https://youtu.be/u9SAJNqbtSU",
+        "imageurl": "https://e00-marca.uecdn.es/assets/multimedia/imagenes/2020/11/17/16056453202908.jpg"
+      },
+      {
+        "workoutname": "Speed & Agility Drills For Defenders",
+        "description": "Workout that is designed for centre backs",
+        "videourl": "https://youtu.be/ad2dF9hbBq8",
+        "imageurl": "https://phantom-marca.unidadeditorial.es/d8edf34725884d2ac41dc7370a4d02c0/crop/0x137/2044x1284/resize/1320/f/jpg/assets/multimedia/imagenes/2022/01/23/16429726313649.jpg"
+      }
+    ]
+  },
+  {
+    "position": "Goalkeeper",
+    "workouts": [
+      {
+        "workoutname": "Goalkeeper Fitness Drills",
+        "description": "full goalkeeper specific training session about handling",
+        "videourl": "https://youtu.be/D6cVv0V1hug",
+        "imageurl": "https://blazetrends.com/wp-content/uploads/2022/01/Manuel-Neuer-wants-to-continue-at-Bayern.jpg"
+      },
+      {
+        "workoutname": "Goalkeeper Footwork and Handling",
+        "description": "Handling and footwork are important for every Goalkeeper",
+        "videourl": "https://youtu.be/3L1TGh_C4co",
+        "imageurl": "https://previews.agefotostock.com/previewimage/medibigoff/1d8cf66c56b961e14a5e7f794b5bfa6e/pah-102917838.jpg"
+      },
+      {
+        "workoutname": "Diving workout for beginners",
+        "description": "The session covers a progression of diving drills and shot stopping.",
+        "videourl": "https://youtu.be/3GtnbXlNV6M",
+        "imageurl": "https://static.independent.co.uk/s3fs-public/thumbnails/image/2012/05/16/15/Manuel-Neuer.jpg?quality=75&width=1200&auto=webp"
+      }
+    ]
+  }
+] 

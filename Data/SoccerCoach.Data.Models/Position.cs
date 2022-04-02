@@ -17,10 +17,11 @@
             this.Players = new HashSet<Player>();
         }
 
-        [Required]
         public PositionName Name { get; set; }
 
         public string Description { get; set; }
+
+        public string Playstyle { get; set; }
 
         public virtual ICollection<Player> Players { get; set; }
 

@@ -7,7 +7,8 @@
     "height": "1.87m",
     "weight": "85kg",
     "experience": "20 years",
-    "description": "Cristiano Ronaldo dos Santos Aveiro (born 5 February 1985) is a Portuguese professional footballer who plays as a striker for Premier League club Manchester United and captains the Portugal national team."
+    "description": "Cristiano Ronaldo dos Santos Aveiro (born 5 February 1985) is a Portuguese professional footballer who plays as a striker for Premier League club Manchester United and captains the Portugal national team.",
+    "imageurl": "https://img.uefa.com/imgml/TP/players/3/2020/324x324/63706.jpg"
   },
   {
     "name": "Sergio Ramos",
@@ -17,7 +18,8 @@
     "height": "1.84m",
     "weight": "82kg",
     "experience": "19 years",
-    "description": "Sergio Ramos Garcia (born 30 March 1986) is a Spanish professional footballer who plays for Ligue 1 club Paris Saint-Germain and the Spain national team."
+    "description": "Sergio Ramos Garcia (born 30 March 1986) is a Spanish professional footballer who plays for Ligue 1 club Paris Saint-Germain and the Spain national team.",
+    "imageurl": "https://img.uefa.com/imgml/TP/players/1/2021/324x324/93649.jpg?imwidth=36"
   },
   {
     "name": "Neymar Junior",
@@ -27,7 +29,8 @@
     "height": "1.75m",
     "weight": "68kg",
     "experience": "13 years",
-    "description": "Neymar da Silva Santos Junior (born 5 February 1992), known as Neymar, is a Brazilian professional footballer who plays as a winger for Ligue 1 club Paris Saint-Germain and the Brazil national team. He is widely regarded as one of the best players in the world."
+    "description": "Neymar da Silva Santos Junior (born 5 February 1992), known as Neymar, is a Brazilian professional footballer who plays as a winger for Ligue 1 club Paris Saint-Germain and the Brazil national team. He is widely regarded as one of the best players in the world.",
+    "imageurl": "https://img.uefa.com/imgml/TP/players/1/2022/324x324/250039508.jpg"
   },
   {
     "name": "Luka Modric",
@@ -37,17 +40,19 @@
     "height": "1.72m",
     "weight": "66kg",
     "experience": "19 years",
-    "description": "Luka Modric (born 9 September 1985) is a Croatian professional footballer who plays as a midfielder for La Liga club Real Madrid and captains the Croatia national team."
+    "description": "Luka Modric (born 9 September 1985) is a Croatian professional footballer who plays as a midfielder for La Liga club Real Madrid and captains the Croatia national team.",
+    "imageurl": "https://img.uefa.com/imgml/TP/players/1/2022/324x324/74699.jpg"
   },
   {
-    "description": "Manuel Peter Neuer (born 27 March 1986) is a German professional footballer who plays as a goalkeeper and captains both Bundesliga club Bayern Munich and the Germany national team.",
-    "experience": "18 years",
-    "height": "1.93m",
     "name": "Manuel Neuer",
-    "position": "Goalkeeper",
     "team": "Bayern Munich",
     "trophies": 2,
-    "weight": "82kg"
+    "position": "Goalkeeper",
+    "height": "1.93m",
+    "weight": "82kg",
+    "experience": "18 years",
+    "description": "Manuel Peter Neuer (born 27 March 1986) is a German professional footballer who plays as a goalkeeper and captains both Bundesliga club Bayern Munich and the Germany national team.",
+    "imageurl": "https://img.uefa.com/imgml/TP/players/3/2020/324x324/97923.jpgg"
   }
 ]
 
