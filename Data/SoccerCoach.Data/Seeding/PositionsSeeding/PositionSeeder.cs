@@ -20,7 +20,7 @@
                 return;
             }
 
-            StreamReader reader = new StreamReader(@"wwwroot\Positions.json");
+            StreamReader reader = new StreamReader(@"wwwroot\Position.json");
 
             string json = await reader.ReadToEndAsync();
 

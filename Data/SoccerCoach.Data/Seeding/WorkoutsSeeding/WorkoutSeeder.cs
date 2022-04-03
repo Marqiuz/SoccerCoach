@@ -21,7 +21,7 @@
                 return;
             }
 
-            StreamReader reader = new StreamReader(@"wwwroot\Workouts.json");
+            StreamReader reader = new StreamReader(@"wwwroot\Workout.json");
 
             string json = await reader.ReadToEndAsync();
 

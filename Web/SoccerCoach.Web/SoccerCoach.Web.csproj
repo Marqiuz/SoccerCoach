@@ -11,19 +11,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Remove="wwwroot\Players.json" />
-    <Content Remove="wwwroot\Positions.json" />
-    <Content Remove="wwwroot\Workouts.json" />
   </ItemGroup>
   <ItemGroup>
     <AdditionalFiles Include="..\..\stylecop.json" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="wwwroot\Workouts.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="wwwroot\Positions.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Include="wwwroot\Players.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -56,7 +48,6 @@
     <ProjectReference Include="..\SoccerCoach.Web.Infrastructure\SoccerCoach.Web.Infrastructure.csproj" />
     <ProjectReference Include="..\SoccerCoach.Web.ViewModels\SoccerCoach.Web.ViewModels.csproj" />
   </ItemGroup>
-  
   <ItemGroup>
     <Content Update="wwwroot\Workouts.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
