@@ -2,12 +2,15 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Text;
+    using System.Linq;
+    using System.Threading.Tasks;
 
     using SoccerCoach.Data.Models.Enums;
 
     public class PlayerViewModel
     {
+        public string Id { get; set; }
+
         public string Name { get; set; }
 
         public PositionName PositionName { get; set; }

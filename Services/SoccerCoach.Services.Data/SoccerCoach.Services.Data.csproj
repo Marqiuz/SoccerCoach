@@ -25,6 +25,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Data\SoccerCoach.Data.Common\SoccerCoach.Data.Common.csproj" />
     <ProjectReference Include="..\..\Data\SoccerCoach.Data.Models\SoccerCoach.Data.Models.csproj" />
+    <ProjectReference Include="..\..\Web\SoccerCoach.Web.ViewModels\SoccerCoach.Web.ViewModels.csproj" />
     <ProjectReference Include="..\SoccerCoach.Services.Mapping\SoccerCoach.Services.Mapping.csproj" />
   </ItemGroup>
 

@@ -1,12 +1,12 @@
 [
   {
     "positionname": "Striker",
-    "description": "In soccer a striker is the player on a team positioned nearest to the opponent’s goal whose primary role is to score goals for their team. The name striker derives from the fact that this player is known for the action of striking the soccer ball as they try to score a goal.",
-    "playstyle": "Strikers need to have great finishing skills. They're confident shooting with either foot and are a dangerous presence in the air. The best strikers can finish with ease and their teammates would always back them to score once they´re in front of goal."
+    "description": "In soccer a striker is the player on a team positioned nearest to the opponents goal whose primary role is to score goals for their team. The name striker derives from the fact that this player is known for the action of striking the soccer ball as they try to score a goal.",
+    "playstyle": "Strikers need to have great finishing skills. They're confident shooting with either foot and are a dangerous presence in the air. The best strikers can finish with ease and their teammates would always back them to score once they are in front of goal."
   },
   {
     "positionname": "Winger",
-    "description": "A winger in soccer is the player that starts the game positioned on the left or right “wing” of the soccer field. The winger operates along the field’s sideline throughout the game, and their primary role is to support the forwards by creating goal-scoring opportunities.",
+    "description": "A winger in soccer is the player that starts the game positioned on the left or right wing of the soccer field. The winger operates along the field sideline throughout the game, and their primary role is to support the forwards by creating goal-scoring opportunities.",
     "playstyle": "Wingers sprint down the sideline into open space, cross the ball, and beat other players 1 vs 1. They can score and play defense. Good wingers are disciplined and push through physical pain. A winger plays on the sides of the field there is a left and right winger."
   },
   {

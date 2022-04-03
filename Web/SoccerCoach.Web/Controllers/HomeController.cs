@@ -2,9 +2,8 @@
 {
     using System.Diagnostics;
 
-    using SoccerCoach.Web.ViewModels;
-
     using Microsoft.AspNetCore.Mvc;
+    using SoccerCoach.Web.ViewModels;
 
     public class HomeController : BaseController
     {
