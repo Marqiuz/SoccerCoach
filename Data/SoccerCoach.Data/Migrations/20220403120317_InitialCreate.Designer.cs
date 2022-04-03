@@ -10,8 +10,8 @@ using SoccerCoach.Data;
 namespace SoccerCoach.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220401114731_ModelsFix")]
-    partial class ModelsFix
+    [Migration("20220403120317_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -464,7 +464,6 @@ namespace SoccerCoach.Data.Migrations
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("PictureId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("PositionId")
@@ -506,9 +505,7 @@ namespace SoccerCoach.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
@@ -518,6 +515,9 @@ namespace SoccerCoach.Data.Migrations
 
                     b.Property<int>("Name")
                         .HasColumnType("int");
+
+                    b.Property<string>("Playstyle")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -688,19 +688,15 @@ namespace SoccerCoach.Data.Migrations
 
             modelBuilder.Entity("SoccerCoach.Data.Models.Player", b =>
                 {
-                    b.HasOne("SoccerCoach.Data.Models.Picture", "Picture")
+                    b.HasOne("SoccerCoach.Data.Models.Picture", null)
                         .WithMany("Players")
-                        .HasForeignKey("PictureId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .HasForeignKey("PictureId");
 
                     b.HasOne("SoccerCoach.Data.Models.Position", "Position")
                         .WithMany("Players")
                         .HasForeignKey("PositionId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
-
-                    b.Navigation("Picture");
 
                     b.Navigation("Position");
                 });
@@ -712,7 +708,7 @@ namespace SoccerCoach.Data.Migrations
                         .HasForeignKey("PictureId");
 
                     b.HasOne("SoccerCoach.Data.Models.Position", "Position")
-                        .WithMany("Skills")
+                        .WithMany("Workouts")
                         .HasForeignKey("PositionId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -754,7 +750,7 @@ namespace SoccerCoach.Data.Migrations
                 {
                     b.Navigation("Players");
 
-                    b.Navigation("Skills");
+                    b.Navigation("Workouts");
                 });
 #pragma warning restore 612, 618
         }
