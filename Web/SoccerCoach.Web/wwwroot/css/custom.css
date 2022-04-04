@@ -12,3 +12,17 @@
     height: 500px;
     width: 1200px;
 }
+
+.text-inside {
+    color: ghostwhite;
+    font-style: initial;
+    justify-content: center;
+    width: 50%;
+}
+
+.box {
+    background: #32CD32;
+    width: 55%;
+    margin: auto;
+    padding: 18px;
+} 
