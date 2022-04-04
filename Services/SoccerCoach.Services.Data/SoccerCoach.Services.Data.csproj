@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.15" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.6">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -25,6 +26,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Data\SoccerCoach.Data.Common\SoccerCoach.Data.Common.csproj" />
     <ProjectReference Include="..\..\Data\SoccerCoach.Data.Models\SoccerCoach.Data.Models.csproj" />
+    <ProjectReference Include="..\..\SoccerCoach.Common\SoccerCoach.Common.csproj" />
     <ProjectReference Include="..\..\Web\SoccerCoach.Web.ViewModels\SoccerCoach.Web.ViewModels.csproj" />
     <ProjectReference Include="..\SoccerCoach.Services.Mapping\SoccerCoach.Services.Mapping.csproj" />
   </ItemGroup>

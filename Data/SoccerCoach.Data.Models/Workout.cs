@@ -37,5 +37,9 @@
         public string PictureId { get; set; }
 
         public virtual Picture Picture { get; set; }
+
+        public string CoachId { get; set; }
+
+        public virtual Coach AddedByCoach { get; set; }
     }
 }
