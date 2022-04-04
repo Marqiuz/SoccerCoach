@@ -63,6 +63,7 @@
             public string ConfirmPassword { get; set; }
 
             [Required]
+            [StringLength(80, ErrorMessage = "Full name must be atleast {2} and at max {1} characters long.", MinimumLength = 6)]
             [Display(Name = "Full Name")]
             public string FullName { get; set; }
 
@@ -71,6 +72,7 @@
 
             public bool HasExperience { get; set; }
 
+            [StringLength(100, ErrorMessage = "Description must be atleast {2} and at max {1} characters long.", MinimumLength = 30)]
             public string Description { get; set; }
 
             public string Phone { get; set; }
@@ -78,8 +80,6 @@
             public string PositionPlayed { get; set; }
 
             public string SelectedRole { get; set; }
-
-            //select menu -> string
         }
 
         public async Task OnGetAsync(string returnUrl = null)
