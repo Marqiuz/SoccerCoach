@@ -10,7 +10,7 @@ using SoccerCoach.Data;
 namespace SoccerCoach.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220405104931_InitialCreate")]
+    [Migration("20220405113038_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

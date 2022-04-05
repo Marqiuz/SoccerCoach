@@ -14,17 +14,15 @@
     public class CoachService : ICoachService
     {
         private readonly IDeletableEntityRepository<Coach> coachRepository;
-        private readonly IPictureService pictureService;
 
         public CoachService(
             IDeletableEntityRepository<Coach> coachRepository,
             IPictureService pictureService)
         {
             this.coachRepository = coachRepository;
-            this.pictureService = pictureService;
         }
 
-        public async Task<bool> CreateCoachAsync(CreateCoachInputModel input)
+        public async Task<bool> CreateCoachAsync(CreateCoachInputModel input, ApplicationUser user)
         {
             var coach = new Coach
             {
@@ -33,6 +31,8 @@
                 Description = input.Description,
                 Phone = input.Phone,
                 Experience = input.Experience,
+                User = user,
+                UserId = user.Id,
             };
 
             if (coach != null && coach.Experience > 0)

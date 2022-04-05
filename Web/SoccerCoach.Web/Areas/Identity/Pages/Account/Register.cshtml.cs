@@ -16,9 +16,11 @@
     using Microsoft.AspNetCore.Mvc.RazorPages;
     using Microsoft.AspNetCore.WebUtilities;
     using Microsoft.Extensions.Logging;
+    using SoccerCoach.Common;
     using SoccerCoach.Data.Models;
     using SoccerCoach.Data.Models.Enums;
     using SoccerCoach.Services.Data.Coach;
+    using SoccerCoach.Web.ViewModels;
 
     [AllowAnonymous]
     public class RegisterModel : PageModel
@@ -106,6 +108,23 @@
                 var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email };
 
                 var result = await _userManager.CreateAsync(user, Input.Password);
+
+                if (Input.SelectedRole == "Coach")
+                {
+                    var coachInputModel = new CreateCoachInputModel
+                    {
+                        FullName = Input.FullName,
+                        Email = Input.Email,
+                        Description = Input.Description,
+                        Experience = Input.Experience,
+                        Phone = Input.Phone
+                    };
+
+                    var coachUser = _userManager.FindByEmailAsync(coachInputModel.Email).Result;
+                    await _coachService.CreateCoachAsync(coachInputModel, coachUser);
+                    await _userManager.AddToRoleAsync(user, GlobalConstants.CoachRoleName);
+                }
+
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");
