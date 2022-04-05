@@ -3,9 +3,8 @@
     using System;
     using System.Threading.Tasks;
 
-    using SoccerCoach.Data.Common;
-
     using Microsoft.EntityFrameworkCore;
+    using SoccerCoach.Data.Common;
 
     public class DbQueryRunner : IDbQueryRunner
     {

@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     using SoccerCoach.Data.Common.Models;
     using SoccerCoach.Data.Models.Enums;
@@ -27,6 +28,13 @@
 
         [Required]
         public string Phone { get; set; }
+
+        [Required]
+        [ForeignKey(nameof(User))]
+        public string UserId { get; set; }
+
+        [Required]
+        public virtual ApplicationUser User { get; set; }
 
         [Required]
         public string Email { get; set; }

@@ -4,9 +4,8 @@ namespace SoccerCoach.Data.Models
     using System;
     using System.Collections.Generic;
 
-    using SoccerCoach.Data.Common.Models;
-
     using Microsoft.AspNetCore.Identity;
+    using SoccerCoach.Data.Common.Models;
 
     public class ApplicationUser : IdentityUser, IAuditInfo, IDeletableEntity
     {
@@ -16,6 +15,8 @@ namespace SoccerCoach.Data.Models
             this.Roles = new HashSet<IdentityUserRole<string>>();
             this.Claims = new HashSet<IdentityUserClaim<string>>();
             this.Logins = new HashSet<IdentityUserLogin<string>>();
+            this.Coaches = new HashSet<Coach>();
+            this.Clients = new HashSet<Client>();
         }
 
         // Audit info
@@ -33,5 +34,9 @@ namespace SoccerCoach.Data.Models
         public virtual ICollection<IdentityUserClaim<string>> Claims { get; set; }
 
         public virtual ICollection<IdentityUserLogin<string>> Logins { get; set; }
+
+        public virtual ICollection<Coach> Coaches { get; set; }
+
+        public virtual ICollection<Client> Clients { get; set; }
     }
 }

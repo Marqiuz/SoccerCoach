@@ -1,5 +1,6 @@
 ﻿@page
 @model RegisterModel
+@using SoccerCoach.Data.Models.Enums
 @{
     ViewData["Title"] = "Register";
 }
@@ -8,7 +9,7 @@
 
 <div class="row">
     <div class="col-md-4">
-        <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+        <form asp-route-returnUrl="@Model.ReturnUrl" method="post" enctype="multipart/form-data">
             <h4>Create a new account.</h4>
             <hr />
             <div asp-validation-summary="All" class="text-danger"></div>
@@ -40,6 +41,11 @@
                 <input asp-for="Input.FullName" class="form-control" />
                 <span asp-validation-for="Input.FullName" class="text-danger"></span>
             </div>
+            <div class="form-group">
+                <label asp-for="Input.Phone"></label>
+                <input asp-for="Input.Phone" class="form-control" />
+                <span asp-validation-for="Input.Phone" class="text-danger"></span>
+            </div>
             <div class="form-group coach">
                 <label asp-for="Input.Experience"></label>
                 <input asp-for="Input.Experience" class="form-control" />
@@ -57,7 +63,7 @@
             </div>
             <div class="form-group client">
                 <label asp-for="Input.PositionPlayed"></label>
-                <input asp-for="Input.PositionPlayed" class="form-control" />
+                <select asp-for="Input.PositionPlayed" form-control" asp-items="@Html.GetEnumSelectList<PositionName>()"></select>
                 <span asp-validation-for="Input.PositionPlayed" class="text-danger"></span>
             </div>
             <button type="submit" class="btn btn-primary">Register</button>

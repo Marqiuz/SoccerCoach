@@ -9,6 +9,7 @@
 
     using Microsoft.AspNetCore.Authentication;
     using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Identity.UI.Services;
     using Microsoft.AspNetCore.Mvc;
@@ -16,6 +17,8 @@
     using Microsoft.AspNetCore.WebUtilities;
     using Microsoft.Extensions.Logging;
     using SoccerCoach.Data.Models;
+    using SoccerCoach.Data.Models.Enums;
+    using SoccerCoach.Services.Data.Coach;
 
     [AllowAnonymous]
     public class RegisterModel : PageModel
@@ -24,17 +27,20 @@
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
+        private readonly ICoachService _coachService;
 
         public RegisterModel(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+            ICoachService coachService)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
+            _coachService = coachService;
         }
 
         [BindProperty]
@@ -68,8 +74,10 @@
             public string FullName { get; set; }
 
             [Range(1, 30)]
+            [Display(Name = "Coach Experience")]
             public int Experience { get; set; }
 
+            [Display(Name = "Do you have any soccer experience?")]
             public bool HasExperience { get; set; }
 
             [StringLength(100, ErrorMessage = "Description must be atleast {2} and at max {1} characters long.", MinimumLength = 30)]
@@ -77,7 +85,8 @@
 
             public string Phone { get; set; }
 
-            public string PositionPlayed { get; set; }
+            [Display(Name = "Choose the role you play")]
+            public PositionName PositionPlayed { get; set; }
 
             public string SelectedRole { get; set; }
         }
@@ -95,6 +104,7 @@
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email };
+
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {

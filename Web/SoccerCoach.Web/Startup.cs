@@ -17,6 +17,8 @@
     using SoccerCoach.Data.Repositories;
     using SoccerCoach.Data.Seeding;
     using SoccerCoach.Services.Data;
+    using SoccerCoach.Services.Data.Coach;
+    using SoccerCoach.Services.Data.Picture;
     using SoccerCoach.Services.Mapping;
     using SoccerCoach.Services.Messaging;
     using SoccerCoach.Web.ViewModels;
@@ -66,6 +68,8 @@
             services.AddTransient<ISettingsService, SettingsService>();
             services.AddTransient<IPlayersService, PlayersService>();
             services.AddTransient<IPositionsService, PositionsService>();
+            services.AddTransient<IPictureService, PictureService>();
+            services.AddTransient<ICoachService, CoachService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

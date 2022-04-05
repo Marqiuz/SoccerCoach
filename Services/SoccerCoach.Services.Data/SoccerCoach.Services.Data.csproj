@@ -29,6 +29,7 @@
     <ProjectReference Include="..\..\SoccerCoach.Common\SoccerCoach.Common.csproj" />
     <ProjectReference Include="..\..\Web\SoccerCoach.Web.ViewModels\SoccerCoach.Web.ViewModels.csproj" />
     <ProjectReference Include="..\SoccerCoach.Services.Mapping\SoccerCoach.Services.Mapping.csproj" />
+    <ProjectReference Include="..\SoccerCoach.Services\SoccerCoach.Services.csproj" />
   </ItemGroup>
 
 </Project>

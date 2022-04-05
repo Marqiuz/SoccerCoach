@@ -279,9 +279,15 @@ namespace SoccerCoach.Data.Migrations
                     b.Property<int>("PositionPlayed")
                         .HasColumnType("int");
 
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("IsDeleted");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Clients");
                 });
@@ -326,11 +332,17 @@ namespace SoccerCoach.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("IsDeleted");
 
                     b.HasIndex("PictureId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Coaches");
                 });
@@ -663,6 +675,17 @@ namespace SoccerCoach.Data.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("SoccerCoach.Data.Models.Client", b =>
+                {
+                    b.HasOne("SoccerCoach.Data.Models.ApplicationUser", "User")
+                        .WithMany("Clients")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("SoccerCoach.Data.Models.Coach", b =>
                 {
                     b.HasOne("SoccerCoach.Data.Models.Picture", "Picture")
@@ -671,7 +694,15 @@ namespace SoccerCoach.Data.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
+                    b.HasOne("SoccerCoach.Data.Models.ApplicationUser", "User")
+                        .WithMany("Coaches")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.Navigation("Picture");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("SoccerCoach.Data.Models.CoachClients", b =>
@@ -730,6 +761,10 @@ namespace SoccerCoach.Data.Migrations
             modelBuilder.Entity("SoccerCoach.Data.Models.ApplicationUser", b =>
                 {
                     b.Navigation("Claims");
+
+                    b.Navigation("Clients");
+
+                    b.Navigation("Coaches");
 
                     b.Navigation("Logins");
 
