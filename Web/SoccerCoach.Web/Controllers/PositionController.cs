@@ -5,11 +5,11 @@
     using Microsoft.AspNetCore.Mvc;
     using SoccerCoach.Services.Data;
 
-    public class PositionsController : BaseController
+    public class PositionController : BaseController
     {
         private readonly IPositionsService positionsService;
 
-        public PositionsController(IPositionsService positionsService)
+        public PositionController(IPositionsService positionsService)
         {
             this.positionsService = positionsService;
         }
