@@ -16,8 +16,7 @@
         private readonly IDeletableEntityRepository<Coach> coachRepository;
 
         public CoachService(
-            IDeletableEntityRepository<Coach> coachRepository,
-            IPictureService pictureService)
+            IDeletableEntityRepository<Coach> coachRepository)
         {
             this.coachRepository = coachRepository;
         }
