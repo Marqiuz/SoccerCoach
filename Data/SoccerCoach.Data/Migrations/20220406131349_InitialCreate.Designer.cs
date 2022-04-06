@@ -10,7 +10,7 @@ using SoccerCoach.Data;
 namespace SoccerCoach.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220405113038_InitialCreate")]
+    [Migration("20220406131349_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -331,7 +331,6 @@ namespace SoccerCoach.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PictureId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("UserId")
@@ -583,6 +582,7 @@ namespace SoccerCoach.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
+                        .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
@@ -690,19 +690,15 @@ namespace SoccerCoach.Data.Migrations
 
             modelBuilder.Entity("SoccerCoach.Data.Models.Coach", b =>
                 {
-                    b.HasOne("SoccerCoach.Data.Models.Picture", "Picture")
+                    b.HasOne("SoccerCoach.Data.Models.Picture", null)
                         .WithMany("Coaches")
-                        .HasForeignKey("PictureId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .HasForeignKey("PictureId");
 
                     b.HasOne("SoccerCoach.Data.Models.ApplicationUser", "User")
                         .WithMany("Coaches")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
-
-                    b.Navigation("Picture");
 
                     b.Navigation("User");
                 });
