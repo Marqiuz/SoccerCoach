@@ -16,7 +16,7 @@
 
         public async Task<IActionResult> All()
         {
-            var viewModel = await this.playersService.GetAllPlayersAsync();
+            var viewModel = await this.playersService.GetAllPlayersAsync<PlayerViewModel>();
 
             return this.View(viewModel);
         }

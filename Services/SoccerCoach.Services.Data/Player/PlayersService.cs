@@ -1,15 +1,12 @@
 ﻿namespace SoccerCoach.Services.Data
 {
-    using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
     using System.Threading.Tasks;
 
     using Microsoft.EntityFrameworkCore;
     using SoccerCoach.Data.Common.Repositories;
     using SoccerCoach.Data.Models;
-    using SoccerCoach.Web.Controllers;
+    using SoccerCoach.Services.Mapping;
 
     public class PlayersService : IPlayersService
     {
@@ -20,22 +17,12 @@
             this.repository = repository;
         }
 
-        public async Task<IEnumerable<PlayerViewModel>> GetAllPlayersAsync()
+        public async Task<IEnumerable<T>> GetAllPlayersAsync<T>()
         {
             var players = await this.repository
                 .AllAsNoTracking()
-                .Select(x => new PlayerViewModel
-                {
-                    Id = x.Id,
-                    Name = x.Name,
-                    PositionName = x.Position.Name,
-                    TeamName = x.TeamName,
-                    Trophies = x.Trophies,
-                    Height = x.Height,
-                    Weight = x.Weight,
-                    Experience = x.Experience,
-                    ImageUrl = x.ImageUrl,
-                }).ToListAsync();
+                .To<T>()
+                .ToListAsync();
 
             return players;
         }

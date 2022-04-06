@@ -37,13 +37,6 @@
         [Required]
         public virtual ApplicationUser User { get; set; }
 
-        [Required]
-        [ForeignKey(nameof(Picture))]
-        public string PictureId { get; set; }
-
-        [Required]
-        public virtual Picture Picture { get; set; }
-
         public virtual ICollection<CoachClients> Clients { get; set; }
 
         public virtual ICollection<Workout> CoachWorkouts { get; set; }

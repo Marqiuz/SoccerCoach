@@ -10,11 +10,11 @@
     using SoccerCoach.Data.Models;
     using SoccerCoach.Web.ViewModels;
 
-    public class ClientService : IClientService
+    public class ClientsService : IClientsService
     {
         private readonly IDeletableEntityRepository<Client> clientRepository;
 
-        public ClientService(IDeletableEntityRepository<Client> repository)
+        public ClientsService(IDeletableEntityRepository<Client> repository)
         {
             this.clientRepository = repository;
         }

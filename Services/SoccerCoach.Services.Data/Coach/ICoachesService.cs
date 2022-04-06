@@ -5,7 +5,7 @@
     using SoccerCoach.Data.Models;
     using SoccerCoach.Web.ViewModels;
 
-    public interface ICoachService
+    public interface ICoachesService
     {
         Task<bool> CreateCoachAsync(CreateCoachInputModel input, ApplicationUser user);
     }

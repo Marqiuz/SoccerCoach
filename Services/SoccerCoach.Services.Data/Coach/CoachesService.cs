@@ -11,11 +11,11 @@
     using SoccerCoach.Services.Data.Picture;
     using SoccerCoach.Web.ViewModels;
 
-    public class CoachService : ICoachService
+    public class CoachesService : ICoachesService
     {
         private readonly IDeletableEntityRepository<Coach> coachRepository;
 
-        public CoachService(
+        public CoachesService(
             IDeletableEntityRepository<Coach> coachRepository)
         {
             this.coachRepository = coachRepository;

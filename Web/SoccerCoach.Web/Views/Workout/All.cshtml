@@ -1,0 +1,20 @@
+﻿@using SoccerCoach.Web.ViewModels.Workouts
+@model ICollection<WorkoutViewModel>
+@using SoccerCoach.Common
+@{
+    this.ViewData["Title"] = "All Workouts";
+}
+
+
+<div class="d-inline-flex">
+    @foreach (var workout in Model)
+    {
+        <div class="card col-6 col-lg-6 game-card">
+            <div class="card-body">
+                <h5 class="card-title">@workout.Name</h5>
+                <p class="card-text">@workout.Description</p>
+            </div>
+            <a href="#" class="btn btn-primary">Watch Workout</a>
+        </div>
+    }
+</div> 

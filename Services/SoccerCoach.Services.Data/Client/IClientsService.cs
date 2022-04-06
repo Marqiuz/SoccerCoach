@@ -8,7 +8,7 @@
     using SoccerCoach.Data.Models;
     using SoccerCoach.Web.ViewModels;
 
-    public interface IClientService
+    public interface IClientsService
     {
         Task<bool> CreateClientAsync(CreateClientInputModel input, ApplicationUser user);
     }

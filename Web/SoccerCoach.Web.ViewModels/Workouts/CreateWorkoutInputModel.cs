@@ -6,6 +6,7 @@
     using System.Text;
 
     using Microsoft.AspNetCore.Http;
+    using SoccerCoach.Common;
     using SoccerCoach.Data.Models.Enums;
 
     public class CreateWorkoutInputModel
@@ -16,6 +17,7 @@
         public string Name { get; set; }
 
         [MaxLength(200)]
+        [Required(ErrorMessage = GlobalConstants.DescriptionErrorMessage)]
         public string Description { get; set; }
 
         [Required]

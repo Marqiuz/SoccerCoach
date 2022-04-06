@@ -5,19 +5,17 @@
     using System.Linq;
     using System.Threading.Tasks;
 
+    using SoccerCoach.Data.Models;
     using SoccerCoach.Data.Models.Enums;
+    using SoccerCoach.Services.Mapping;
 
-    public class PlayerViewModel
+    public class PlayerViewModel : IMapFrom<Player>
     {
         public string Id { get; set; }
 
         public string Name { get; set; }
 
         public PositionName PositionName { get; set; }
-
-        public string PositionDescription { get; set; }
-
-        public string PositionPlaystyle { get; set; }
 
         public string TeamName { get; set; }
 
