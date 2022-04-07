@@ -1,4 +1,4 @@
-﻿namespace SoccerCoach.Web.Controllers
+﻿    namespace SoccerCoach.Web.Controllers
 {
     using System.Threading.Tasks;
 
@@ -6,16 +6,20 @@
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using SoccerCoach.Data.Models;
+    using SoccerCoach.Services.Data.Coach;
     using SoccerCoach.Services.Data.Workout;
     using SoccerCoach.Web.ViewModels.Workouts;
 
     public class WorkoutController : BaseController
     {
+        public const int ItemsPerPage = 9;
+
         private readonly IWorkoutsService workoutsService;
         private readonly UserManager<ApplicationUser> userManager;
 
         public WorkoutController(
             IWorkoutsService workoutsService,
+            ICoachesService coachesService,
             UserManager<ApplicationUser> userManager)
         {
             this.workoutsService = workoutsService;
@@ -23,9 +27,21 @@
         }
 
         [HttpGet]
-        public IActionResult All()
+        public IActionResult All(int id = 1)
         {
-            var viewModel = this.workoutsService.GetAll<WorkoutViewModel>();
+            if (id <= 0)
+            {
+                return this.NotFound();
+            }
+
+            var viewModel = new ListOfWorkoutsViewModel
+            {
+                ItemsPerPage = ItemsPerPage,
+                PageNumber = id,
+                WorkoutsCount = this.workoutsService.GetCount(),
+                Workouts = this.workoutsService.GetAll<WorkoutInListViewModel>(id, ItemsPerPage),
+            };
+
             return this.View(viewModel);
         }
 

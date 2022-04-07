@@ -1,9 +1,10 @@
 ﻿namespace SoccerCoach.Web.ViewModels.Workouts
 {
     using SoccerCoach.Data.Models;
+    using SoccerCoach.Data.Models.Enums;
     using SoccerCoach.Services.Mapping;
 
-    public class WorkoutViewModel : IMapFrom<Workout>
+    public class WorkoutInListViewModel : IMapFrom<Workout>
     {
         public string Id { get; set; }
 
@@ -11,7 +12,7 @@
 
         public string Description { get; set; }
 
-        public string PositionName { get; set; }
+        public PositionName PositionName { get; set; }
 
         public string VideoUrl { get; set; }
 

@@ -8,7 +8,9 @@
 
     public interface IWorkoutsService
     {
-        ICollection<T> GetAll<T>();
+        IEnumerable<T> GetAll<T>(int page, int itemsPerPage);
+
+        int GetCount();
 
         Task CreateAsync(CreateWorkoutInputModel input, string userId);
 
