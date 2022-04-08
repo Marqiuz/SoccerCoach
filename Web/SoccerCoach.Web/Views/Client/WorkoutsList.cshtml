@@ -28,9 +28,11 @@
                     <li class="list-group-item">
                         <div>
                             <a href="#" class="btn orangebackground font-weight-bold">Watch Workout</a>
-                            <form method="post" asp-action="Delete" id="deleteForm" asp-route-id="@workout.Id">
-                            </form>
-                            <button class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">Remove</button>
+                            <div>
+                                <form method="post" asp-controller="Client" asp-action="Delete" id="deleteForm" asp-route-id="@workout.Id">
+                                </form>
+                                <button class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">Remove</button>
+                            </div>
                         </div>
                     </li>
                 </ul>
@@ -39,6 +41,7 @@
         <hr />
     }
 </div>
+
 <!-- Modal -->
 <div class="modal" tabindex="-1" role="dialog" id="deleteModal">
     <div class="modal-dialog" role="document">

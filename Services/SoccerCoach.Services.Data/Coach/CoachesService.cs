@@ -6,10 +6,12 @@
     using System.Text;
     using System.Threading.Tasks;
 
+    using Microsoft.EntityFrameworkCore;
     using SoccerCoach.Common;
     using SoccerCoach.Data.Common.Repositories;
     using SoccerCoach.Data.Models;
     using SoccerCoach.Services.Data.Picture;
+    using SoccerCoach.Services.Mapping;
     using SoccerCoach.Web.ViewModels;
 
     public class CoachesService : ICoachesService
@@ -44,6 +46,16 @@
             }
 
             throw new InvalidOperationException(GlobalConstants.InvalidOperationExceptionWhileCreatingCoach);
+        }
+
+        public async Task<IEnumerable<T>> GetAllCoachesAsync<T>()
+        {
+            var coaches = await this.coachRepository
+                .AllAsNoTracking()
+                .To<T>()
+                .ToListAsync();
+
+            return coaches;
         }
 
         public Coach GetCoachByUserId(string id)

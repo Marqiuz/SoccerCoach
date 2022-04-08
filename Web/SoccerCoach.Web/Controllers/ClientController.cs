@@ -32,9 +32,13 @@
             var user = await this.userManager.GetUserAsync(this.User);
             var result = await this.clientsService.AddWorkoutToClientList(id, user.Id);
 
-            if (result == true)
+            if (result == "added")
             {
                 this.TempData["SuccessMessage"] = GlobalConstants.SuccessfullyAddedWorkout;
+            }
+            else if (result == "invalid")
+            {
+                this.TempData["InvalidMessage"] = GlobalConstants.InvalidWorkout;
             }
             else
             {
