@@ -9,6 +9,7 @@
     using SoccerCoach.Common;
     using SoccerCoach.Data.Common.Repositories;
     using SoccerCoach.Data.Models;
+    using SoccerCoach.Data.Models.Enums;
     using SoccerCoach.Services.Data.Coach;
     using SoccerCoach.Services.Mapping;
     using SoccerCoach.Web.ViewModels.Workouts;
@@ -89,6 +90,40 @@
             var workout = this.GetWorkoutById(id);
             this.workoutsRepository.Delete(workout);
             await this.workoutsRepository.SaveChangesAsync();
+        }
+
+        public (IEnumerable<T> Workouts, int Count) GetSearchedPositions<T>(SearchWorkoutInputModel inputModel, int page, int itemsPerPage)
+        {
+            var query = this.workoutsRepository.AllAsNoTracking().AsQueryable();
+
+            if (inputModel.Striker != false)
+            {
+                query = query.Where(x => x.Position.Name == PositionName.Striker);
+            }
+
+            if (inputModel.Winger != false)
+            {
+                query = query.Where(x => x.Position.Name == PositionName.Winger);
+            }
+
+            if (inputModel.Defender != false)
+            {
+                query = query.Where(x => x.Position.Name == PositionName.Defender);
+            }
+
+            if (inputModel.Midfielder != false)
+            {
+                query = query.Where(x => x.Position.Name == PositionName.Midfielder);
+            }
+
+            if (inputModel.Goalkeeper != false)
+            {
+                query = query.Where(x => x.Position.Name == PositionName.Goalkeeper);
+            }
+
+            query = query.OrderByDescending(x => x.CreatedOn).Skip((page - 1) * itemsPerPage);
+
+            return (query.To<T>().Take(itemsPerPage).ToList(), query.To<T>().ToList().Count);
         }
 
         public IEnumerable<T> GetAll<T>(int page, int itemsPerPage)

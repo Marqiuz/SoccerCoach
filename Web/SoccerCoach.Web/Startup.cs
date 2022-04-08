@@ -19,6 +19,7 @@
     using SoccerCoach.Services.Data;
     using SoccerCoach.Services.Data.Client;
     using SoccerCoach.Services.Data.Coach;
+    using SoccerCoach.Services.Data.Course;
     using SoccerCoach.Services.Data.Picture;
     using SoccerCoach.Services.Data.Workout;
     using SoccerCoach.Services.Mapping;
@@ -74,6 +75,7 @@
             services.AddTransient<IWorkoutsService, WorkoutsService>();
             services.AddTransient<ICoachesService, CoachesService>();
             services.AddTransient<IClientsService, ClientsService>();
+            services.AddTransient<ICoursesService, CoursesService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

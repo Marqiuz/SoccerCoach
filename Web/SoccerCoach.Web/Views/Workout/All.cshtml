@@ -13,6 +13,30 @@
 {
     <div class="alert alert-danger">@this.TempData["ErrorMessage"]</div>
 }
+@if (this.TempData.ContainsKey("InvalidMessage"))
+{
+    <div class="alert alert-danger">@this.TempData["InvalidMessage"]</div>
+}
+
+<h5>Note: Please select one position at a time.</h5>
+<form  method="get" asp-action="All">
+    <input type="checkbox" asp-for="Striker">
+    <label asp-for="Striker"></label>
+
+    <input type="checkbox" asp-for="Winger">
+    <label asp-for="Winger"></label>
+
+    <input type="checkbox" asp-for="Defender">
+    <label asp-for="Defender"></label>
+
+    <input type="checkbox" asp-for="Midfielder">
+    <label asp-for="Midfielder"></label>
+
+    <input type="checkbox" asp-for="Goalkeeper">
+    <label asp-for="Goalkeeper"></label>
+
+    <button type="submit" class="btn btn-primary">Filter</button>
+</form>
 
 <div class="row">
     @foreach (var workout in Model.Workouts)
@@ -50,4 +74,57 @@
  </div>
 
 
- <partial name="_PagingPartial" model="@Model" />
+<nav aria-label="...">
+    <ul class="pagination justify-content-center">
+        <li class="page-item @if (!Model.HasPreviousPage) { <text>disabled</text> }">
+            <a class="page-link" asp-controller="Workout" asp-action="All" asp-route-id="@Model.PreviousPageNumber"
+               asp-route-pointguard="@Model.Striker"
+               asp-route-shootingguard="@Model.Winger"
+               asp-route-smallforward="@Model.Defender"
+               asp-route-powerforward="@Model.Midfielder"
+               asp-route-center="@Model.Goalkeeper">Previous</a>
+        </li>
+        @for (int i = Model.PageNumber - 4; i < Model.PageNumber; i++)
+        {
+            if (i > 0)
+            {
+                <li class="page-item">
+                    <a class="page-link" asp-controller="Workout" asp-action="All" asp-route-id="@i"
+                       asp-route-striker="@Model.Striker"
+                       asp-route-winger="@Model.Winger"
+                       asp-route-defender="@Model.Defender"
+                       asp-route-midfielder="@Model.Midfielder"
+                       asp-route-goalkeeper="@Model.Goalkeeper">@i</a>
+                </li>
+            }
+        }
+        <li class="page-item active" aria-current="page">
+            <span class="page-link">
+                @Model.PageNumber
+                <span class="sr-only">(current)</span>
+            </span>
+        </li>
+        @for (int i = Model.PageNumber + 1; i <= Model.PageNumber + 4; i++)
+        {
+            if (i <= Model.PagesCount)
+            {
+                <li class="page-item">
+                    <a class="page-link" asp-controller="Workout" asp-action="All" asp-route-id="@i"
+                       asp-route-striker="@Model.Striker"
+                       asp-route-winger="@Model.Winger"
+                       asp-route-defender="@Model.Defender"
+                       asp-route-midfielder="@Model.Midfielder"
+                       asp-route-goalkeeper="@Model.Goalkeeper">@i</a>
+                </li>
+            }
+        }
+        <li class="page-item @if (!Model.HasNextPage) { <text>disabled</text> }">
+            <a class="page-link" asp-controller="Workout" asp-action="All" asp-route-id="@Model.NextPageNumber"
+                       asp-route-striker="@Model.Striker"
+                       asp-route-winger="@Model.Winger"
+                       asp-route-defender="@Model.Defender"
+                       asp-route-midfielder="@Model.Midfielder"
+                       asp-route-goalkeeper="@Model.Goalkeeper">Next</a>
+        </li>
+    </ul>
+</nav> 

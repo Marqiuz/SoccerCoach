@@ -26,19 +26,25 @@
         }
 
         [HttpGet]
-        public IActionResult All(int id = 1)
+        public IActionResult All(SearchWorkoutInputModel inputModel, int id = 1)
         {
             if (id <= 0)
             {
                 return this.NotFound();
             }
 
+            var result = this.workoutsService.GetSearchedPositions<WorkoutInListViewModel>(inputModel, id, ItemsPerPage);
             var viewModel = new ListOfWorkoutsViewModel
             {
                 ItemsPerPage = ItemsPerPage,
                 PageNumber = id,
-                WorkoutsCount = this.workoutsService.GetCount(),
-                Workouts = this.workoutsService.GetAll<WorkoutInListViewModel>(id, ItemsPerPage),
+                WorkoutsCount = result.Count,
+                Workouts = result.Workouts,
+                Striker = inputModel.Striker,
+                Winger = inputModel.Winger,
+                Defender = inputModel.Defender,
+                Midfielder = inputModel.Midfielder,
+                Goalkeeper = inputModel.Goalkeeper,
             };
 
             return this.View(viewModel);

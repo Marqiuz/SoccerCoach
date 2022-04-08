@@ -20,6 +20,8 @@
 
         public int WorkoutsCount { get; set; }
 
+        public int CoursesCount { get; set; }
+
         public int ItemsPerPage { get; set; }
     }
 }

@@ -6,16 +6,16 @@
 
     using SoccerCoach.Data.Common.Models;
 
-    public class WorkoutsList : BaseDeletableModel<string>
+    public class CourseClients : BaseDeletableModel<string>
     {
-        public WorkoutsList()
+        public CourseClients()
         {
             this.Id = Guid.NewGuid().ToString();
         }
 
-        public string WorkoutId { get; set; }
+        public string CourseId { get; set; }
 
-        public virtual Workout Workout { get; set; }
+        public virtual Course Course { get; set; }
 
         public string ClientId { get; set; }
 

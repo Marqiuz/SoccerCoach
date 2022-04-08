@@ -13,6 +13,7 @@
     using SoccerCoach.Services.Data.Picture;
     using SoccerCoach.Services.Mapping;
     using SoccerCoach.Web.ViewModels;
+    using SoccerCoach.Web.ViewModels.Coaches;
 
     public class CoachesService : ICoachesService
     {

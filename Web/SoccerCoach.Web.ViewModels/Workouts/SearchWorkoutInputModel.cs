@@ -5,7 +5,7 @@
     using System.ComponentModel.DataAnnotations;
     using System.Text;
 
-    public class ListOfWorkoutsViewModel : PagingViewModel
+    public class SearchWorkoutInputModel
     {
         [Display(Name = "Striker")]
         public bool Striker { get; set; }
@@ -21,7 +21,5 @@
 
         [Display(Name = "Goalkeeper")]
         public bool Goalkeeper { get; set; }
-
-        public IEnumerable<WorkoutInListViewModel> Workouts { get; set; }
     }
 }

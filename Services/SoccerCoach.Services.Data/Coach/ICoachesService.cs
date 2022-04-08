@@ -5,6 +5,7 @@
 
     using SoccerCoach.Data.Models;
     using SoccerCoach.Web.ViewModels;
+    using SoccerCoach.Web.ViewModels.Coaches;
 
     public interface ICoachesService
     {
