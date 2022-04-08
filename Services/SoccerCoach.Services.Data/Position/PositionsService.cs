@@ -9,6 +9,7 @@
     using Microsoft.EntityFrameworkCore;
     using SoccerCoach.Data.Common.Repositories;
     using SoccerCoach.Data.Models;
+    using SoccerCoach.Data.Models.Enums;
     using SoccerCoach.Web.ViewModels;
 
     public class PositionsService : IPositionsService
@@ -35,6 +36,20 @@
                 }).FirstOrDefaultAsync();
 
             return player;
+        }
+
+        public Position GetPositionById(string id)
+        {
+            var position = this.repository.AllAsNoTracking().First(x => x.Id == id);
+
+            return position;
+        }
+
+        public Position GetPositionByName(PositionName name)
+        {
+            var position = this.repository.AllAsNoTracking().First(x => x.Name == name);
+
+            return position;
         }
     }
 }

@@ -8,5 +8,7 @@
     public interface ICoachesService
     {
         Task<bool> CreateCoachAsync(CreateCoachInputModel input, ApplicationUser user);
+
+        Coach GetCoachByUserId(string id);
     }
 }

@@ -1,19 +1,34 @@
-﻿@using SoccerCoach.Web.ViewModels.Workouts
-@model ListOfWorkoutsViewModel
+﻿@model ListOfWorkoutsViewModel
+@using SoccerCoach.Web.ViewModels.Workouts
 @using SoccerCoach.Common
 @{
-    this.ViewData["Title"] = "All Workouts, page" + Model.PageNumber;
+     this.ViewData["Title"] = "All Workouts, page " + Model.PageNumber;
 }
 
+@if (this.TempData.ContainsKey("SuccessMessage"))
+{
+    <div class="alert alert-success">@this.TempData["SuccessMessage"]</div>
+}
+@if (this.TempData.ContainsKey("ErrorMessage"))
+{
+    <div class="alert alert-danger">@this.TempData["ErrorMessage"]</div>
+}
 
 <div class="row">
     @foreach (var workout in Model.Workouts)
     {
-        <div class="card col-4 game-card mt-2">
-            
+        <div class="card col-4 game-card mt-2">         
          <div class="card-body">
                 <h5 class="card-title">@workout.Name</h5>
-                <div class="font-weight-bolder text-colorise">Position: @Html.DisplayFor(model => workout.PositionName)</div><br>
+                 <div class="font-weight-bolder text-colorise">
+                    Position: @Html.DisplayFor(model => workout.PositionName)
+                    @if (User.IsInRole("Client"))
+                    {
+                        <a asp-controller="Client" asp-action="AddToWorkoutList" asp-route-id="@workout.Id">
+                            <i title="Add to your list"></i>
+                        </a>
+                    }
+                </div><br>
                 <p class="card-text">@workout.Description</p>
                 @if (workout.AddedByCoach != null)
                 {

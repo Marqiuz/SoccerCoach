@@ -9,29 +9,30 @@
     using SoccerCoach.Common;
     using SoccerCoach.Data.Common.Repositories;
     using SoccerCoach.Data.Models;
+    using SoccerCoach.Services.Data.Coach;
     using SoccerCoach.Services.Mapping;
     using SoccerCoach.Web.ViewModels.Workouts;
 
     public class WorkoutsService : IWorkoutsService
     {
         private readonly IDeletableEntityRepository<Workout> workoutsRepository;
-        private readonly IDeletableEntityRepository<Position> positionsRepository;
-        private readonly IDeletableEntityRepository<Coach> coachesRepository;
+        private readonly IPositionsService positionsService;
+        private readonly ICoachesService coachesService;
 
         public WorkoutsService(
             IDeletableEntityRepository<Workout> workoutsRepository,
-            IDeletableEntityRepository<Position> positionsRepository,
-            IDeletableEntityRepository<Coach> coachesRepository)
+            IPositionsService positionsService,
+            ICoachesService coachesService)
         {
             this.workoutsRepository = workoutsRepository;
-            this.positionsRepository = positionsRepository;
-            this.coachesRepository = coachesRepository;
+            this.positionsService = positionsService;
+            this.coachesService = coachesService;
         }
 
         public async Task CreateAsync(CreateWorkoutInputModel input, string userId)
         {
-            var position = this.positionsRepository.AllAsNoTracking().First(x => x.Name == input.PositionName);
-            var coach = this.coachesRepository.AllAsNoTracking().FirstOrDefault(x => x.UserId == userId);
+            var position = this.positionsService.GetPositionByName(input.PositionName);
+            var coach = this.coachesService.GetCoachByUserId(userId);
 
             var workout = new Workout
             {
@@ -49,7 +50,7 @@
         public async Task EditAsync(EditWorkoutViewModel input)
         {
             var workout = this.GetWorkoutById(input.Id);
-            var position = this.positionsRepository.AllAsNoTracking().First(x => x.Name == input.PositionName);
+            var position = this.positionsService.GetPositionByName(input.PositionName);
 
             workout.Name = input.Name;
             workout.PositionId = position.Id;
@@ -63,7 +64,7 @@
         public EditWorkoutViewModel GetWorkoutForEdit(string id)
         {
             var workout = this.GetWorkoutById(id);
-            var position = this.positionsRepository.AllAsNoTracking().First(x => x.Id == workout.PositionId);
+            var position = this.positionsService.GetPositionById(workout.PositionId);
 
             if (workout != null)
             {

@@ -357,11 +357,25 @@ namespace SoccerCoach.Data.Migrations
                     b.Property<string>("CoachId")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
                     b.HasKey("Id");
 
                     b.HasIndex("ClientId");
 
                     b.HasIndex("CoachId");
+
+                    b.HasIndex("IsDeleted");
 
                     b.ToTable("CoachClients");
                 });
@@ -567,9 +581,6 @@ namespace SoccerCoach.Data.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("ClientId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<string>("CoachId")
                         .HasColumnType("nvarchar(450)");
 
@@ -611,8 +622,6 @@ namespace SoccerCoach.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ClientId");
-
                     b.HasIndex("CoachId");
 
                     b.HasIndex("IsDeleted");
@@ -622,6 +631,40 @@ namespace SoccerCoach.Data.Migrations
                     b.HasIndex("PositionId");
 
                     b.ToTable("Workouts");
+                });
+
+            modelBuilder.Entity("SoccerCoach.Data.Models.WorkoutsList", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ClientId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("WorkoutId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ClientId");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.HasIndex("WorkoutId");
+
+                    b.ToTable("WorkoutsList");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -729,10 +772,6 @@ namespace SoccerCoach.Data.Migrations
 
             modelBuilder.Entity("SoccerCoach.Data.Models.Workout", b =>
                 {
-                    b.HasOne("SoccerCoach.Data.Models.Client", null)
-                        .WithMany("WorkoutsList")
-                        .HasForeignKey("ClientId");
-
                     b.HasOne("SoccerCoach.Data.Models.Coach", "AddedByCoach")
                         .WithMany("CoachWorkouts")
                         .HasForeignKey("CoachId");
@@ -752,6 +791,21 @@ namespace SoccerCoach.Data.Migrations
                     b.Navigation("Picture");
 
                     b.Navigation("Position");
+                });
+
+            modelBuilder.Entity("SoccerCoach.Data.Models.WorkoutsList", b =>
+                {
+                    b.HasOne("SoccerCoach.Data.Models.Client", "Client")
+                        .WithMany("WorkoutsList")
+                        .HasForeignKey("ClientId");
+
+                    b.HasOne("SoccerCoach.Data.Models.Workout", "Workout")
+                        .WithMany("WorkoutsLists")
+                        .HasForeignKey("WorkoutId");
+
+                    b.Navigation("Client");
+
+                    b.Navigation("Workout");
                 });
 
             modelBuilder.Entity("SoccerCoach.Data.Models.ApplicationUser", b =>
@@ -793,6 +847,11 @@ namespace SoccerCoach.Data.Migrations
                     b.Navigation("Players");
 
                     b.Navigation("Workouts");
+                });
+
+            modelBuilder.Entity("SoccerCoach.Data.Models.Workout", b =>
+                {
+                    b.Navigation("WorkoutsLists");
                 });
 #pragma warning restore 612, 618
         }

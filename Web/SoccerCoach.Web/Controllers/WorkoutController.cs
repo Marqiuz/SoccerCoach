@@ -19,7 +19,6 @@
 
         public WorkoutController(
             IWorkoutsService workoutsService,
-            ICoachesService coachesService,
             UserManager<ApplicationUser> userManager)
         {
             this.workoutsService = workoutsService;
@@ -92,6 +91,7 @@
         }
 
         [Authorize(Roles = "Coach")]
+        [HttpPost]
         public async Task<IActionResult> Delete(string id)
         {
             await this.workoutsService.DeleteAsync(id);

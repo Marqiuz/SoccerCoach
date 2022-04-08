@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
 
@@ -43,6 +44,13 @@
             }
 
             throw new InvalidOperationException(GlobalConstants.InvalidOperationExceptionWhileCreatingCoach);
+        }
+
+        public Coach GetCoachByUserId(string id)
+        {
+            var coach = this.coachRepository.AllAsNoTracking().FirstOrDefault(x => x.UserId == id);
+
+            return coach;
         }
     }
 }
