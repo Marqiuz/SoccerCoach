@@ -9,10 +9,12 @@
 
     public interface ICoursesService
     {
+        Task<string> AddClientToCourse(string id, string userId);
+
         Task CreateCourseAsync(CreateCourseInputModel input, string userId);
 
         int GetCount();
 
-        IEnumerable<T> GetAll<T>(int page, int itemsPerPage);
+        Task<IEnumerable<CourseInListViewModel>> GetAll(string userId, int page, int itemsPerPage);
     }
 }

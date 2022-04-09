@@ -10,9 +10,13 @@
 
     public class CourseInListViewModel : IMapFrom<Course>
     {
+        public string Id { get; set; }
+
+        public bool HasApplied { get; set; }
+
         public string Name { get; set; }
 
-        public DateTime StarDate { get; set; }
+        public DateTime StartDate { get; set; }
 
         public DateTime EndDate { get; set; }
 

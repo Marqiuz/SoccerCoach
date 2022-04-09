@@ -5,6 +5,7 @@
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
+    using SoccerCoach.Common;
     using SoccerCoach.Data.Models;
     using SoccerCoach.Services.Data.Coach;
     using SoccerCoach.Services.Data.Course;
@@ -51,12 +52,16 @@
         }
 
         [HttpGet]
-        public IActionResult All(int id = 1)
+        public async Task<IActionResult> All(int id = 1)
         {
             if (id <= 0)
             {
                 return this.NotFound();
             }
+
+            var user = await this.userManager.GetUserAsync(this.User);
+
+            var userId = user != null ? user.Id : string.Empty;
 
             const int ItemsPerPage = 9;
             var viewModel = new CoursesListViewModel
@@ -64,10 +69,20 @@
                 ItemsPerPage = ItemsPerPage,
                 PageNumber = id,
                 CoursesCount = this.coursesService.GetCount(),
-                Courses = this.coursesService.GetAll<CourseInListViewModel>(id, ItemsPerPage),
+                Courses = await this.coursesService.GetAll(userId, id, ItemsPerPage),
             };
 
             return this.View(viewModel);
+        }
+
+        [Authorize(Roles = GlobalConstants.ClientRoleName)]
+        [HttpGet]
+        public async Task<IActionResult> ApplyToCourse(string id)
+        {
+            var user = await this.userManager.GetUserAsync(this.User);
+            var result = await this.coursesService.AddClientToCourse(id, user.Id);
+
+            return this.RedirectToAction("All");
         }
     }
 }

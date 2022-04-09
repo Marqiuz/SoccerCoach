@@ -68,7 +68,7 @@
                     <h4>Added by: SoccerCoach</h4>
                 }
             </div>
-            <a href="#" class="btn btn-primary">Watch Workout</a>
+            <a href="#" class="btn btn-primary btn-resize">Watch Workout</a>
         </div>
     }
  </div>
@@ -78,11 +78,11 @@
     <ul class="pagination justify-content-center">
         <li class="page-item @if (!Model.HasPreviousPage) { <text>disabled</text> }">
             <a class="page-link" asp-controller="Workout" asp-action="All" asp-route-id="@Model.PreviousPageNumber"
-               asp-route-pointguard="@Model.Striker"
-               asp-route-shootingguard="@Model.Winger"
-               asp-route-smallforward="@Model.Defender"
-               asp-route-powerforward="@Model.Midfielder"
-               asp-route-center="@Model.Goalkeeper">Previous</a>
+               asp-route-striker="@Model.Striker"
+               asp-route-winger="@Model.Winger"
+               asp-route-defender="@Model.Defender"
+               asp-route-midfielder="@Model.Midfielder"
+               asp-route-goalkeeper="@Model.Goalkeeper">Previous</a>
         </li>
         @for (int i = Model.PageNumber - 4; i < Model.PageNumber; i++)
         {

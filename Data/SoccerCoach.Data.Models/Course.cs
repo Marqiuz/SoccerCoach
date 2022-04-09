@@ -14,6 +14,7 @@
         public Course()
         {
             this.Id = Guid.NewGuid().ToString();
+            this.Clients = new HashSet<CourseClients>();
         }
 
         [Required]
@@ -38,6 +39,6 @@
         [Required]
         public virtual Coach Coach { get; set; }
 
-        public virtual ICollection<Client> Clients { get; set; }
+        public virtual ICollection<CourseClients> Clients { get; set; }
     }
 }
