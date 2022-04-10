@@ -30,7 +30,9 @@
             IDeletableEntityRepository<Course> coursesRepository)
         {
             this.coachesService = coachesService;
+            this.clientsService = clientsService;
             this.coursesRepository = coursesRepository;
+            this.courseClientsRepository = courseClientsRepository;
         }
 
         public async Task<string> AddClientToCourse(string id, string userId)
