@@ -6,19 +6,16 @@
 
     using SoccerCoach.Data.Common.Models;
 
-    public class CoachClients : BaseDeletableModel<string>
+    public class Vote : BaseModel<int>
     {
-        public CoachClients()
-        {
-            this.Id = Guid.NewGuid().ToString();
-        }
-
         public string CoachId { get; set; }
 
-        public virtual Coach Coach { get; set; }
+        public virtual Coach Cach { get; set; }
 
         public string ClientId { get; set; }
 
         public virtual Client Client { get; set; }
+
+        public byte Value { get; set; }
     }
 }

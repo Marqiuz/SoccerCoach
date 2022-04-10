@@ -19,8 +19,6 @@
 
         public string Email { get; set; }
 
-        public int ClientsCount { get; set; }
-
         public int CoachWorkoutsCount { get; set; }
     }
 }
