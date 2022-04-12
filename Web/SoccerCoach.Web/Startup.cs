@@ -21,6 +21,7 @@
     using SoccerCoach.Services.Data.Coach;
     using SoccerCoach.Services.Data.Course;
     using SoccerCoach.Services.Data.Picture;
+    using SoccerCoach.Services.Data.Votes;
     using SoccerCoach.Services.Data.Workout;
     using SoccerCoach.Services.Mapping;
     using SoccerCoach.Services.Messaging;
@@ -57,6 +58,10 @@
                         options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
                     }).AddRazorRuntimeCompilation();
             services.AddRazorPages();
+            services.AddAntiforgery(options =>
+            {
+                options.HeaderName = "X-CSRF-TOKEN";
+            });
             services.AddDatabaseDeveloperPageExceptionFilter();
 
             services.AddSingleton(this.configuration);
@@ -76,6 +81,7 @@
             services.AddTransient<ICoachesService, CoachesService>();
             services.AddTransient<IClientsService, ClientsService>();
             services.AddTransient<ICoursesService, CoursesService>();
+            services.AddTransient<IVotesService, VotesService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

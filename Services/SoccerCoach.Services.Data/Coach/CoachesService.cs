@@ -59,6 +59,27 @@
             return coaches;
         }
 
+        public async Task<CoachViewModel> GetCoachById(string id)
+        {
+            var coach = await this.coachRepository
+                .AllAsNoTracking()
+                .Where(x => x.Id == id)
+                .Select(x => new CoachViewModel
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    Experience = x.Experience,
+                    Phone = x.Phone,
+                    Email = x.Email,
+                    CoachWorkoutsCount = x.CoachWorkouts.Count(),
+                    CoursesCount = x.Courses.Count(),
+                    Description = x.Description,
+                    AverageVote = !x.Votes.Any() ? 0 : x.Votes.Average(x => x.Value),
+                }).FirstOrDefaultAsync();
+
+            return coach;
+        }
+
         public Coach GetCoachByUserId(string id)
         {
             var coach = this.coachRepository.AllAsNoTracking().FirstOrDefault(x => x.UserId == id);

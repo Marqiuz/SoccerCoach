@@ -13,6 +13,8 @@
 
         Task<IEnumerable<T>> GetAllCoachesAsync<T>();
 
+        Task<CoachViewModel> GetCoachById(string id);
+
         Coach GetCoachByUserId(string id);
     }
 }
