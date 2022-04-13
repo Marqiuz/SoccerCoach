@@ -48,7 +48,7 @@
             var user = await this.userManager.GetUserAsync(this.User);
             await this.coursesService.CreateCourseAsync(input, user.Id);
 
-            return this.Redirect("/");
+            return this.RedirectToAction("All");
         }
 
         [HttpGet]
