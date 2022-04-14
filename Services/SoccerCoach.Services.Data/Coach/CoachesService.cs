@@ -51,18 +51,18 @@
 
         public async Task<IEnumerable<T>> GetAllCoachesAsync<T>()
         {
-            var coaches = await this.coachRepository
-                .AllAsNoTracking()
+            var coaches = this.coachRepository
+               .AllAsNoTracking()
                 .To<T>()
-                .ToListAsync();
+                   .ToList();
 
             return coaches;
         }
 
         public async Task<CoachViewModel> GetCoachById(string id)
         {
-            var coach = await this.coachRepository
-                .AllAsNoTracking()
+            var coach = this.coachRepository
+               .AllAsNoTracking()
                 .Where(x => x.Id == id)
                 .Select(x => new CoachViewModel
                 {
@@ -75,7 +75,7 @@
                     CoursesCount = x.Courses.Count(),
                     Description = x.Description,
                     AverageVote = !x.Votes.Any() ? 0 : x.Votes.Average(x => x.Value),
-                }).FirstOrDefaultAsync();
+                }).FirstOrDefault();
 
             return coach;
         }

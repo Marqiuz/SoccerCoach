@@ -65,10 +65,10 @@
         public EditWorkoutViewModel GetWorkoutForEdit(string id)
         {
             var workout = this.GetWorkoutById(id);
-            var position = this.positionsService.GetPositionById(workout.PositionId);
 
             if (workout != null)
             {
+                var position = this.positionsService.GetPositionById(workout.PositionId);
                 var model = new EditWorkoutViewModel()
                 {
                     Id = workout.Id,
@@ -87,7 +87,7 @@
 
         public async Task DeleteAsync(string id)
         {
-            var workout = this.GetWorkoutById(id);
+            var workout = this.workoutsRepository.All().FirstOrDefault(x => x.Id == id);
             this.workoutsRepository.Delete(workout);
             await this.workoutsRepository.SaveChangesAsync();
         }

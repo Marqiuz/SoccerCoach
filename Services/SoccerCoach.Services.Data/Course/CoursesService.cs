@@ -80,7 +80,7 @@
         {
             var client = this.clientsService.GetClientById(userId);
 
-            var courses = await this.coursesRepository.AllAsNoTracking()
+            var courses = this.coursesRepository.AllAsNoTracking()
                 .OrderByDescending(x => x.Id)
                 .Select(x => new CourseInListViewModel
                 {
@@ -94,7 +94,7 @@
                     Coach = x.Coach,
                 })
                 .Skip((page - 1) * itemsPerPage).Take(itemsPerPage)
-                 .ToListAsync();
+                 .ToList();
 
             return courses;
         }
