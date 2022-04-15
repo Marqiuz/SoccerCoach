@@ -875,13 +875,13 @@ namespace SoccerCoach.Data.Migrations
                         .WithMany("Votes")
                         .HasForeignKey("ClientId");
 
-                    b.HasOne("SoccerCoach.Data.Models.Coach", "Cach")
+                    b.HasOne("SoccerCoach.Data.Models.Coach", "Coach")
                         .WithMany("Votes")
                         .HasForeignKey("CoachId");
 
-                    b.Navigation("Cach");
-
                     b.Navigation("Client");
+
+                    b.Navigation("Coach");
                 });
 
             modelBuilder.Entity("SoccerCoach.Data.Models.Workout", b =>

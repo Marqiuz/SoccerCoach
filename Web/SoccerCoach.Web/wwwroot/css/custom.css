@@ -34,6 +34,15 @@
 .orangebackground {
     background-color: darkorange;
 }
+.greenbackground {
+    background-color: lawngreen;
+}
+
+.img-home {
+    margin-left: 90px;
+    width: 850px;
+    height: 570px;
+}
 
 .btn-resize {
     margin-right: 90px;

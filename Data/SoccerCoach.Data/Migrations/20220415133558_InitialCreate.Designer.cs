@@ -10,8 +10,8 @@ using SoccerCoach.Data;
 namespace SoccerCoach.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220410092444_VotesAdded")]
-    partial class VotesAdded
+    [Migration("20220415133558_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -663,7 +663,7 @@ namespace SoccerCoach.Data.Migrations
 
                     b.HasIndex("CoachId");
 
-                    b.ToTable("Vote");
+                    b.ToTable("Votes");
                 });
 
             modelBuilder.Entity("SoccerCoach.Data.Models.Workout", b =>
@@ -877,13 +877,13 @@ namespace SoccerCoach.Data.Migrations
                         .WithMany("Votes")
                         .HasForeignKey("ClientId");
 
-                    b.HasOne("SoccerCoach.Data.Models.Coach", "Cach")
+                    b.HasOne("SoccerCoach.Data.Models.Coach", "Coach")
                         .WithMany("Votes")
                         .HasForeignKey("CoachId");
 
-                    b.Navigation("Cach");
-
                     b.Navigation("Client");
+
+                    b.Navigation("Coach");
                 });
 
             modelBuilder.Entity("SoccerCoach.Data.Models.Workout", b =>

@@ -59,10 +59,11 @@ namespace SoccerCoach.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Phone = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FirstName = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    LastName = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Twitter = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Instagram = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Title = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
+                    Content = table.Column<string>(type: "nvarchar(300)", maxLength: 300, nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
@@ -323,12 +324,16 @@ namespace SoccerCoach.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "CoachClients",
+                name: "Courses",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    CoachId = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    ClientId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    StarDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    EndDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    PositionName = table.Column<int>(type: "int", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
+                    CoachId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
@@ -336,15 +341,38 @@ namespace SoccerCoach.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CoachClients", x => x.Id);
+                    table.PrimaryKey("PK_Courses", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_CoachClients_Clients_ClientId",
+                        name: "FK_Courses_Coaches_CoachId",
+                        column: x => x.CoachId,
+                        principalTable: "Coaches",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Votes",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CoachId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    ClientId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    Value = table.Column<byte>(type: "tinyint", nullable: false),
+                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Votes", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Votes_Clients_ClientId",
                         column: x => x.ClientId,
                         principalTable: "Clients",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_CoachClients_Coaches_CoachId",
+                        name: "FK_Votes_Coaches_CoachId",
                         column: x => x.CoachId,
                         principalTable: "Coaches",
                         principalColumn: "Id",
@@ -387,6 +415,35 @@ namespace SoccerCoach.Data.Migrations
                         name: "FK_Workouts_Positions_PositionId",
                         column: x => x.PositionId,
                         principalTable: "Positions",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "CourseClients",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    CourseId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    ClientId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    DeletedOn = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CourseClients", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_CourseClients_Clients_ClientId",
+                        column: x => x.ClientId,
+                        principalTable: "Clients",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_CourseClients_Courses_CourseId",
+                        column: x => x.CourseId,
+                        principalTable: "Courses",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -480,21 +537,6 @@ namespace SoccerCoach.Data.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_CoachClients_ClientId",
-                table: "CoachClients",
-                column: "ClientId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_CoachClients_CoachId",
-                table: "CoachClients",
-                column: "CoachId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_CoachClients_IsDeleted",
-                table: "CoachClients",
-                column: "IsDeleted");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Coaches_IsDeleted",
                 table: "Coaches",
                 column: "IsDeleted");
@@ -512,6 +554,31 @@ namespace SoccerCoach.Data.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_ContactForms_IsDeleted",
                 table: "ContactForms",
+                column: "IsDeleted");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CourseClients_ClientId",
+                table: "CourseClients",
+                column: "ClientId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CourseClients_CourseId",
+                table: "CourseClients",
+                column: "CourseId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CourseClients_IsDeleted",
+                table: "CourseClients",
+                column: "IsDeleted");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Courses_CoachId",
+                table: "Courses",
+                column: "CoachId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Courses_IsDeleted",
+                table: "Courses",
                 column: "IsDeleted");
 
             migrationBuilder.CreateIndex(
@@ -538,6 +605,16 @@ namespace SoccerCoach.Data.Migrations
                 name: "IX_Settings_IsDeleted",
                 table: "Settings",
                 column: "IsDeleted");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Votes_ClientId",
+                table: "Votes",
+                column: "ClientId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Votes_CoachId",
+                table: "Votes",
+                column: "CoachId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Workouts_CoachId",
@@ -593,10 +670,10 @@ namespace SoccerCoach.Data.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "CoachClients");
+                name: "ContactForms");
 
             migrationBuilder.DropTable(
-                name: "ContactForms");
+                name: "CourseClients");
 
             migrationBuilder.DropTable(
                 name: "Players");
@@ -605,10 +682,16 @@ namespace SoccerCoach.Data.Migrations
                 name: "Settings");
 
             migrationBuilder.DropTable(
+                name: "Votes");
+
+            migrationBuilder.DropTable(
                 name: "WorkoutsList");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
+
+            migrationBuilder.DropTable(
+                name: "Courses");
 
             migrationBuilder.DropTable(
                 name: "Clients");
